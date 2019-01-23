@@ -1,0 +1,20 @@
+%h3 Statistics    
+%table    
+  %tr
+    %td Tweets
+    %td= @user.statuses_count
+  %tr
+    %td Followers
+    %td= @user.followers_count
+  %tr
+    %td Following
+    %td= @user.friends_count  
+  %tr
+    %td Followers ratio
+    %td=DataMine::Twitter.follower_ratio(@user)
+  %tr
+    %td Listed
+    %td= @user.listed_count
+  %tr
+    %td Favourites
+    %td= @user.favourites_count

@@ -1,0 +1,4 @@
+%h3 # Hashtags
+%p
+  - tags.each do |tag, count|
+    = link_to "##{tag.downcase}", (DataMine::Twitter::URL + "search?q=%23" + tag), title: ("Used " + pluralize(2, 'time')), target: "_blank"

@@ -1,0 +1,16 @@
+defaults: &defaults
+  app_name: tweet_analysis
+  twitter: &twitter_defaults
+    consumer_key: cuIZDNUsfRTDUwBbdW5neA
+    consumer_secret: gps8Ec7hKqO9I2aIItukRlpE43jGp25nt8JV89Xc80
+    access_token: 71282191-npJUQ0bckbW1hXNxxhpqEXbGhTxUouDeOrIC4c0Jz
+    access_token_secret: 8gSYiuGIVZT7XDviOdyqHmXbfINX59YNfQBU737KItfKE
+  default_url_options:
+    host: localhost
+    port: 3000
+  asset_host: http://localhost:3000
+
+development:
+  <<: *defaults
+  twitter:
+    <<: *twitter_defaults

@@ -1,0 +1,6 @@
+%h3 Mentions
+%p
+  / FIXME: reduce load, elminate number of loops
+  - profiles_hash = DataMine::Twitter.users_profile_images(@client, mentions.keys)
+  - mentions.each do |mention, count|
+    = link_to image_tag(profiles_hash[mention]), "/#{mention}", title: ("@"+ mention + "/ mentioned "+ pluralize(count, 'time')), target: "_blank"

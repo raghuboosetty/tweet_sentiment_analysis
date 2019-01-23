@@ -1,0 +1,25 @@
+%h3 Tweet Time
+- ttime = [["Hour", "Tweets"]]
+- 24.times do |hour|
+  - ttime << [hour, (tweet_time[hour] || 0)]
+      
+#chart_div{style: "width: 900px; height: 250px;"}
+
+:javascript
+  google.load("visualization", "1", {packages:["corechart"]});
+  google.setOnLoadCallback(drawChart);
+  function drawChart() {
+    var data = google.visualization.arrayToDataTable(#{ttime});
+
+    var options = {
+      legend: { position: "none" },
+      title: 'Tweet Hours',
+      hAxis: {title: 'Hours'},
+      vAxis: {title: 'Tweets'},
+      colors: ['#0077F3'],
+      bar: {groupWidth: '95%'}
+    };
+
+    var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
+    chart.draw(data, options);
+  }

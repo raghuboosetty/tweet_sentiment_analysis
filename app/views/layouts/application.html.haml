@@ -1,0 +1,14 @@
+!!!
+%html
+  %head
+    %title TweetAnalysis
+    %script{src: "https://www.google.com/jsapi", type: "text/javascript"}
+    = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
+    = javascript_include_tag "application", "data-turbolinks-track" => true
+    = csrf_meta_tags
+  %body{style: "width: 980px; margin: 0 auto;"}
+    - if flash[:alert]
+      .alert= flash[:alert]
+    - elsif flash[:notice]
+      .notice= flash[:notice]
+    = yield

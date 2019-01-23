@@ -1,0 +1,18 @@
+%table
+  %tr
+    %td
+      = image_tag(@user.profile_image_url.gsub("normal", "bigger"))
+    %td
+      %h2= @name
+= render 'information'
+= render 'statistics'
+- if @user_timeline.size > 0
+  - hash_tags, mentions, replies, retweets, sources, tweet_time, attitude, mood = DataMine::Twitter.analysis(@user_timeline)
+  = render 'topics', topics: DataMine::Twitter.topics(@user_timeline.collect(&:text).join(" "))
+  = render 'hash_tags', tags: hash_tags
+  = render 'mentions', mentions: mentions
+  = render 'tweet_stats', replies: replies, retweets: retweets, sources: sources
+  = render 'tweet_time', tweet_time: tweet_time
+  = render 'analysis', attitude: attitude, mood: mood
+
+%h4= "Total Tweets Read: #{@user_timeline.size}"

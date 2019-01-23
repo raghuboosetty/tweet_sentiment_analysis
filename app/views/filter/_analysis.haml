@@ -1,0 +1,27 @@
+%h3 Attitude
+= attitude
+%h3 Mood Analysis
+
+#piechart_3d{style: "width: 300px; height: 300px;"}
+
+:javascript
+  google.load("visualization", "1", {packages:["corechart"]});
+  google.setOnLoadCallback(drawChart);
+  function drawChart() {
+    var data = google.visualization.arrayToDataTable([
+      ['Mood', 'Percent'],
+      ['Happy', #{mood[:happy]}],
+      ['Sad',   #{mood[:sad]}]
+    ]);
+
+    var options = {
+      legend: 'none',
+      pieSliceText: 'label',
+      title: "#{@name}'s Mood",
+      is3D: true,
+      tooltip: { text: 'percentage' }
+    };
+
+    var chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
+    chart.draw(data, options);
+  }

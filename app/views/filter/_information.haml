@@ -1,0 +1,26 @@
+%h3 Information
+%table
+  %tr
+    %td Name
+    %td= @user.name
+  %tr
+    %td Joined On
+    %td= format_datetime(@user.created_at)
+  %tr
+    %td Location
+    %td= @user.location
+  %tr
+    %td Timezone
+    %td= @user.time_zone
+  %tr
+    %td Language
+    %td= LanguageCodes.to_lang(@user.lang)
+  %tr
+    %td Bio
+    %td= @user.description
+  %tr
+    %td URL
+    %td= link_to @user.url, @user.url, target: "_blank"
+  %tr
+    %td Last Tweeted
+    %td= format_datetime(@user.status.try(:created_at))

@@ -1,0 +1,15 @@
+%h3 Topics
+#topics_tag_cloud{style: "width: 600px;"}
+  - topics.each do |topic, count|
+    - if count > 7 && topic.size > 1
+      = link_to topic, (DataMine::Twitter::URL + "search?q=" + topic), title: ("Used " + pluralize(count, 'time')), rel: count, target: "_blank"
+  
+:javascript
+  $.fn.tagcloud.defaults = {
+    size: {start: 12, end: 26, unit: 'pt'},
+    color: {start: '#007af8', end: '#0069d6'}
+  };
+
+  $(function () {
+    $('#topics_tag_cloud a').tagcloud();
+  });

@@ -1,0 +1,13 @@
+%h3 100 tweets
+%h4 Replies
+- replies.each do |replied_to_user, count|
+  = link_to "@#{replied_to_user}", ("/" + replied_to_user), title: ("@"+ replied_to_user + "/ replied "+ pluralize(count, 'time')), target: "_blank"
+  ='&nbsp;'.html_safe
+%h4 Retweets
+- retweets.each do |retweet_author, count|
+  = link_to "@#{retweet_author}", ("/" + retweet_author), title: ("@"+ retweet_author + "/ Retweeted "+ pluralize(count, 'time')), target: "_blank"
+  ='&nbsp;'.html_safe
+%h4 Sources
+- sources.each do |source, count|
+  = link_to source, "#", title: ("Used "+ pluralize(count, 'time'))
+  ='&nbsp;'.html_safe
